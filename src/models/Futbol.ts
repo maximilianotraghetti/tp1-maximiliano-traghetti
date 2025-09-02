@@ -1,18 +1,19 @@
-import { Equipo } from "./Equipo";
-import { Deporte } from "./Deporte";
+import { Deporte } from "./Deporte.js";
+import { Equipo } from "./Equipo.js";
+
 export class Futbol extends Deporte {
-  constructor(
-    public readonly nombre: string = "Fútbol",
-    public readonly maxPorEquipo: number = 11
-  ) {
-    super(nombre, maxPorEquipo);
+  constructor() {
+    super("Fútbol", 11);
   }
 
-  validar(equipo: Equipo): boolean {
-    const jugadores = equipo.listarIntegrantes();
-    if (jugadores.length !== this.maxPorEquipo) {
-      return false;
+  public validar(equipo: Equipo): boolean {
+    const esValido =
+      equipo.cantidad <= this.maxPorEquipo && equipo.cantidad > 0;
+    if (!esValido) {
+      console.warn(
+        `❌ El equipo de fútbol ${equipo.nombre} no es válido. Máximo ${this.maxPorEquipo} jugadores, tiene ${equipo.cantidad}.`
+      );
     }
-    return true;
+    return esValido;
   }
 }

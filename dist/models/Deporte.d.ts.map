@@ -1,0 +1,1 @@
+{"version":3,"file":"Deporte.d.ts","sourceRoot":"","sources":["../../src/models/Deporte.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,aAAa,CAAC;AAErC,8BAAsB,OAAO;IAC3B,MAAM,EAAE,MAAM,CAAC;IACf,YAAY,EAAE,MAAM,CAAC;gBAET,MAAM,EAAE,MAAM,EAAE,YAAY,EAAE,MAAM;aAKhC,OAAO,CAAC,MAAM,EAAE,MAAM,GAAG,OAAO;CACjD"}

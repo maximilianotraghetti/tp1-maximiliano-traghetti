@@ -1,7 +1,13 @@
 export class Resultado {
-  constructor(public golesLocal: number, public golesVisitante: number) {}
+  golesLocal: number;
+  golesVisitante: number;
 
-  toString(): string {
-    return `Resultado: Local ${this.golesLocal} - Visitante ${this.golesVisitante}`;
+  constructor(golesLocal: number, golesVisitante: number) {
+    this.golesLocal = golesLocal;
+    this.golesVisitante = golesVisitante;
+  }
+
+  public toString(): string {
+    return `Resultado: ${this.golesLocal} - ${this.golesVisitante}`;
   }
 }

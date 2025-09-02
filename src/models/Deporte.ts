@@ -1,7 +1,13 @@
-import type { Equipo } from "./Equipo";
+import { Equipo } from "./Equipo.js";
 
 export abstract class Deporte {
-  constructor(public nombre: string, public maxPorEquipo: number) {}
+  nombre: string;
+  maxPorEquipo: number;
 
-  abstract validar(equipo: Equipo): boolean;
+  constructor(nombre: string, maxPorEquipo: number) {
+    this.nombre = nombre;
+    this.maxPorEquipo = maxPorEquipo;
+  }
+
+  public abstract validar(equipo: Equipo): boolean;
 }

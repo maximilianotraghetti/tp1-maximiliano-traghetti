@@ -1,26 +1,34 @@
-import type { ICompetidor } from "../interfaces/ICompetidor";
-import type { Jugador } from "./Jugador";
+import type { ICompetidor } from "../interfaces/ICompetidor.js";
+import { Jugador } from "./Jugador.js";
 
 export class Equipo implements ICompetidor {
-  private integrantes: Jugador[] = [];
+  private _jugadores: Jugador[];
+  nombre: string;
 
-  constructor(public nombre: string) {}
-
-  agregarIntegrante(integrante: Jugador): void {
-    this.integrantes.push(integrante);
+  constructor(nombre: string) {
+    this.nombre = nombre;
+    this._jugadores = [];
   }
 
-  listarIntegrantes(): string[] {
-    return this.integrantes.map((jugador) => jugador.toString());
+  // Encapsulamiento: getter para la cantidad de jugadores
+  public get cantidad(): number {
+    return this._jugadores.length;
   }
 
-  toString(): string {
-    return `Equipo: ${this.nombre}, Integrantes: [${this.integrantes.join(
-      ", "
-    )}]`;
+  public agregarJugador(jugador: Jugador): void {
+    if (this._jugadores.some((j) => j.id === jugador.id)) {
+      console.warn(`❌ El jugador con ID ${jugador.id} ya está en el equipo.`);
+      return;
+    }
+    this._jugadores.push(jugador);
   }
 
-  get cantidadIntegrantes(): number {
-    return this.integrantes.length;
+  public listarIntegrantes(): string[] {
+    return this._jugadores.map((j) => j.nombre);
+  }
+
+  public toString(): string {
+    const nombresJugadores = this.listarIntegrantes().join(", ");
+    return `Equipo: ${this.nombre}, Jugadores: [${nombresJugadores}]`;
   }
 }

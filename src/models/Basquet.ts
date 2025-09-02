@@ -1,18 +1,19 @@
-import { Equipo } from "./Equipo.ts";
-import { Deporte } from "./Deporte.ts";
+import { Deporte } from "./Deporte.js";
+import { Equipo } from "./Equipo.js";
+
 export class Basquet extends Deporte {
-  constructor(
-    public readonly nombre: string = "Básquet",
-    public readonly maxPorEquipo: number = 5
-  ) {
-    super(nombre, maxPorEquipo);
+  constructor() {
+    super("Básquet", 5);
   }
 
-  validar(equipo: Equipo): boolean {
-    const jugadores = equipo.listarIntegrantes();
-    if (jugadores.length !== this.maxPorEquipo) {
-      return false;
+  public validar(equipo: Equipo): boolean {
+    const esValido =
+      equipo.cantidad <= this.maxPorEquipo && equipo.cantidad > 0;
+    if (!esValido) {
+      console.warn(
+        `❌ El equipo de básquet ${equipo.nombre} no es válido. Máximo ${this.maxPorEquipo} jugadores, tiene ${equipo.cantidad}.`
+      );
     }
-    return true;
+    return esValido;
   }
 }
